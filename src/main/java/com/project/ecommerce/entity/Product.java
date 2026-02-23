@@ -40,10 +40,11 @@ public class Product {
     @NotBlank(message = "Seller information is required")
     private String seller;
 
-    @NotBlank(message = "Stock is required")
+    @NotNull(message = "Stock is required")
     @PositiveOrZero(message = "Value should be greater than or equal to zero ")
     private Integer stock;
-    private Integer numOfReviews;
+
+    private Integer numOfReviews =0;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "product_id")
@@ -103,7 +104,7 @@ public class Product {
     }
 
     public Product(Integer id, String name, Double price, String description, Double ratings, String seller,
-            Integer stock, Integer numOfReviews) {
+            Integer stock) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -111,7 +112,9 @@ public class Product {
         this.ratings = ratings;
         this.seller = seller;
         this.stock = stock;
-        this.numOfReviews = numOfReviews;
     }
-
+    public Product()
+    {
+        super();
+    }
 }
