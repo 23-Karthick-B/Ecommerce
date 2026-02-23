@@ -17,7 +17,7 @@ import jakarta.validation.constraints.PositiveOrZero;
 
 @Entity
 @Table(name = "products ")
-public class Products {
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -102,7 +102,7 @@ public class Products {
         this.numOfReviews = numOfReviews;
     }
 
-    public Products(Integer id, String name, Double price, String description, Double ratings, String seller,
+    public Product(Integer id, String name, Double price, String description, Double ratings, String seller,
             Integer stock, Integer numOfReviews) {
         this.id = id;
         this.name = name;
