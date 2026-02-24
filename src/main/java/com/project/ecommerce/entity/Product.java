@@ -35,6 +35,9 @@ public class Product {
     @NotBlank(message = "Description is required")
     private String description;
 
+    @NotBlank(message = "Category is required")
+    private String category;
+
     private Double ratings = 0.0;
 
     @NotBlank(message = "Seller information is required")
@@ -103,12 +106,19 @@ public class Product {
         this.numOfReviews = numOfReviews;
     }
 
-    public Product(Integer id, String name, Double price, String description, Double ratings, String seller,
+    public String getCategory() {
+        return category;
+    }
+    public void setCategory(String category) {
+        this.category = category;
+    }
+    public Product(Integer id, String name, Double price, String description,String category, Double ratings, String seller,
             Integer stock) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.description = description;
+        this.category =category;
         this.ratings = ratings;
         this.seller = seller;
         this.stock = stock;

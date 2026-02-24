@@ -20,17 +20,22 @@ public class ProductSeeder implements CommandLineRunner {
 
         if(productRepository.count()==0){
         List<Product> demoProducts = List.of(
-            new Product(null,"Macbook Air M4",95000.00,"Laptop with M4 chip",4.8,"Amazon",25),
-            new Product(null,"iPhone 15 Pro",129999.00,"Apple flagship smartphone",4.7,"Flipkart",40),
-            new Product(null,"Samsung Galaxy S24",79999.00,"Samsung premium smartphone",4.6,"Amazon",35),
-            new Product(null,"Sony WH-1000XM5",29990.00,"Noise cancelling wireless headphones",4.7,"Amazon",50),
-            new Product(null,"iPad Air M2",69999.00,"Apple tablet with M2 chip",4.8,"Flipkart",30),
-            new Product(null,"Dell XPS 13",115000.00,"Ultra thin premium laptop",4.5,"Amazon",20),
-            new Product(null,"Boat Airdopes 141",1299.00,"Wireless Bluetooth earbuds",4.3,"Flipkart",100),
-            new Product(null,"LG 55 inch OLED TV",145000.00,"4K Ultra HD Smart OLED TV",4.6,"Amazon",15),
-            new Product(null,"Logitech MX Master 3S",8995.00,"Advanced wireless mouse",4.7,"Amazon",60),
-            new Product(null,"Amazon Echo Dot 5th Gen",5499.00,"Smart speaker with Alexa",4.4,"Amazon",80),
-            new Product(null,"HP Pavilion Gaming Laptop",72000.00,"Gaming laptop with RTX graphics",4.5,"Flipkart",22)
+            new Product(null,"Macbook Air M4",95000.00,"Laptop with M4 chip","Electronics",4.8,"Amazon",25),
+            new Product(null,"Dell XPS 13",105000.00,"Ultra-thin premium laptop","Electronics",4.5,"Dell Store",20),
+            new Product(null,"Apple Watch Series 9",41999.00,"Advanced smartwatch with health tracking","Electronics",4.7,"Amazon",60),
+            new Product(null,"iPad Air M2",69999.00,"Powerful tablet with M2 chip","Electronics",4.6,"Flipkart",30),
+            new Product(null,"OnePlus 12",64999.00,"High performance 5G smartphone","Electronics",4.5,"Amazon",45),
+            new Product(null,"Logitech MX Master 3S",9999.00,"Ergonomic wireless mouse","Accessories",4.8,"Amazon",80),
+            new Product(null,"Nike Air Zoom Pegasus",8999.00,"Comfortable running shoes","Footwear",4.6,"Nike Store",55),
+            new Product(null,"Levi's Men's Slim Fit Jeans",2499.00,"Stylish slim fit denim jeans","Clothing",4.5,"Amazon",70),
+            new Product(null,"Prestige Pressure Cooker 5L",1899.00,"Durable stainless steel pressure cooker","Home & Kitchen",4.4,"Flipkart",90),
+            new Product(null,"Philips Air Fryer",9999.00,"Healthy oil-free cooking appliance","Home Appliances",4.7,"Amazon",25),
+            new Product(null,"Puma Men's Sports T-Shirt",1299.00,"Breathable gym wear t-shirt","Sportswear",4.3,"Puma Store",100),
+            new Product(null,"Classmate Notebook Pack",299.00,"Pack of 6 ruled notebooks","Stationery",4.6,"Amazon",200),
+            new Product(null,"Milton Thermosteel Water Bottle",799.00,"1L insulated steel bottle","Home & Kitchen",4.5,"Flipkart",150),
+            new Product(null,"Urban Ladder Wooden Study Table",7499.00,"Engineered wood study desk","Furniture",4.4,"Urban Ladder",12),
+            new Product(null,"Cosmic Byte Gaming Keyboard",2499.00,"RGB mechanical gaming keyboard","Gaming",4.5,"Amazon",65),
+            new Product(null,"Himalaya Face Wash",199.00,"Herbal neem face cleanser","Personal Care",4.2,"Flipkart",180)
         );
         productRepository.saveAll(demoProducts);
         System.out.println("Seeded demo products");
