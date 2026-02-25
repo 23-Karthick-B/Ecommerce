@@ -26,9 +26,14 @@ public class ProductSpecification {
                 cb.like(root.get("name"), "%"+keyword.toLowerCase()+"%"),
                 cb.like(root.get("description"), "%"+keyword.toLowerCase()+"%")
             );
-
         };
+    }
 
+    public static Specification<Product> ratingGreterThan(Double ratings){
+        return (root,query,cb) -> {
+            if (ratings == null) return null;
+            return cb.greaterThanOrEqualTo(root.get("ratings"), ratings);
+        };
     }
 
 }
