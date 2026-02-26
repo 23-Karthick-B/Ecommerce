@@ -5,6 +5,7 @@ public class ProductReviewDto {
     private Long productId;
     private String comment;
     private Double rating;
+
     public Long getProductId() {
         return productId;
     }

@@ -1,66 +1,37 @@
-package com.project.ecommerce.entity;
+package com.project.ecommerce.dto;
 
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.PositiveOrZero;
+import com.project.ecommerce.entity.ProductImage;
 
-@Entity
-@Table(name = "products")
-public class Product {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ProductDto {
     private Integer id;
 
-    @Column(nullable = false)
-    @NotBlank(message = "Name field is required") //Comes in validation package
     private String name;
 
-    @Column(nullable = false)
-    @NotNull(message = "Price field is required")
-    @PositiveOrZero(message = "Value must be greater than or equal to zero")
     private Double price;
 
-    @NotBlank(message = "Description is required")
     private String description;
 
-    @NotBlank(message = "Category is required")
     private String category;
 
     private Double ratings = 0.0;
 
-    @NotBlank(message = "Seller information is required")
     private String seller;
 
-    @NotNull(message = "Stock is required")
-    @PositiveOrZero(message = "Value should be greater than or equal to zero ")
     private Integer stock;
 
     private Integer numOfReviews =0;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "product_id")
     private List<ProductImage> images;
 
-    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
-    @JoinColumn(name = "product_id")
-    private List<ProductReview> reviews;
+    private List<ProductReviewDto> reviews;
     
-    public List<ProductReview> getReviews() {
+    public List<ProductReviewDto> getReviews() {
         return reviews;
     }
-    public void setReviews(List<ProductReview> reviews) {
+    public void setReviews(List<ProductReviewDto> reviews) {
         this.reviews = reviews;
     }
     public Integer getId() {
@@ -118,19 +89,19 @@ public class Product {
     public void setCategory(String category) {
         this.category = category;
     }
-    public Product(Integer id, String name, Double price, String description,String category, Double ratings, String seller,
-            Integer stock) {
+    public ProductDto() {
+        super();
+    }
+
+    public ProductDto(Integer id, String name, Double price, String description,
+                    String category, Double ratings, String seller, Integer stock) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.description = description;
-        this.category =category;
+        this.category = category;
         this.ratings = ratings;
         this.seller = seller;
         this.stock = stock;
-    }
-    public Product()
-    {
-        super();
     }
 }
