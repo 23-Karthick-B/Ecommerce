@@ -56,7 +56,13 @@ public class Product {
     @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
     @JoinColumn(name = "product_id")
     private List<ProductReview> reviews;
-
+    
+    public List<ProductReview> getReviews() {
+        return reviews;
+    }
+    public void setReviews(List<ProductReview> reviews) {
+        this.reviews = reviews;
+    }
     public Integer getId() {
         return id;
     }

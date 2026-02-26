@@ -22,6 +22,5 @@ public class ProductReviewDto {
     }
     public void setRating(Double rating) {
         this.rating = rating;
-    }
-    
+    } 
 }
