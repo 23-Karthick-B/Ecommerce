@@ -89,6 +89,7 @@ public class ProductDto {
     public void setCategory(String category) {
         this.category = category;
     }
+    
     public ProductDto() {
         super();
     }
@@ -103,5 +104,11 @@ public class ProductDto {
         this.ratings = ratings;
         this.seller = seller;
         this.stock = stock;
+    }
+    public List<ProductImage> getImages() {
+        return images;
+    }
+    public void setImages(List<ProductImage> images) {
+        this.images = images;
     }
 }

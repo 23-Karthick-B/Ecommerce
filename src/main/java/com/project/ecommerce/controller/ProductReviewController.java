@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.ecommerce.dto.ProductReviewDto;
 import com.project.ecommerce.service.ProductService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.PostMapping;
 
 
@@ -20,7 +23,7 @@ public class ProductReviewController {
     private ProductService productService;
 
     @PostMapping
-    public ResponseEntity<?> addReviews(@RequestBody ProductReviewDto reviewDto){
+    public ResponseEntity<?> addReviews(@RequestBody @Valid ProductReviewDto reviewDto){
         productService.addReview(reviewDto);
         return ResponseEntity.status(HttpStatus.CREATED).body("Review added");
     }

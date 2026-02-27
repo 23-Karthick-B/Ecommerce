@@ -1,9 +1,15 @@
 package com.project.ecommerce.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 public class ProductReviewDto {
 
+    @NotNull(message = "Product Id is required")
     private Long productId;
+    @NotBlank(message = "Comment cannot be blank")
     private String comment;
+    @NotNull(message = "Review is required")
     private Double rating;
 
     public Long getProductId() {
