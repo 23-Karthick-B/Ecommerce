@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.ecommerce.dto.CreateOrderRequest;
+import com.project.ecommerce.dto.OrderCreated;
 import com.project.ecommerce.dto.OrderItemDto;
 import com.project.ecommerce.entity.Order;
 import com.project.ecommerce.entity.OrderItem;
@@ -21,7 +22,7 @@ public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
-    public Order createOrder(CreateOrderRequest orderRequest){
+    public OrderCreated createOrder(CreateOrderRequest orderRequest){
         Order order = new Order();
         order.setStatus("PENDING");
         double totalItemsAmount = 0;
@@ -46,9 +47,16 @@ public class OrderService {
         totalAmount = totalItemsAmount -taxAmount;
         order.setTotalAmount(totalAmount);
         order.setTaxAmount(taxAmount);
-        order.setReferenceId(UUID.randomUUID().toString() );
+        String refId = UUID.randomUUID().toString();
+        order.setReferenceId(refId);
 
-        return orderRepository.save(order);
+        orderRepository.save(order);
+        return new OrderCreated(refId);
+    }
+
+    public Order getOrder(String referenceId){
+        return orderRepository.findByReferenceId(referenceId).orElseThrow(()-> new RuntimeException("Reference Id not found"));
+
     }
 
 }

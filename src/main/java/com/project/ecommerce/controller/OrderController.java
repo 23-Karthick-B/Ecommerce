@@ -8,8 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.ecommerce.dto.CreateOrderRequest;
+import com.project.ecommerce.dto.OrderCreated;
 import com.project.ecommerce.entity.Order;
 import com.project.ecommerce.service.OrderService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 @RestController
 @RequestMapping("/api/orders")
@@ -19,8 +23,14 @@ public class OrderController {
 
     @PostMapping
     public ResponseEntity<?> createOrder(@RequestBody CreateOrderRequest orderRequest){
-        Order order = orderService.createOrder(orderRequest);
-        return ResponseEntity.ok().body(order);  
+        OrderCreated orderCreated = orderService.createOrder(orderRequest);
+        return ResponseEntity.ok().body(orderCreated);  
     }
+    @GetMapping("/{referenceId}")
+    public ResponseEntity<?> getOrder(@PathVariable String referenceId) {
+        Order order = orderService.getOrder(referenceId);
+        return ResponseEntity.ok().body(order);
+    }
+    
 
 }
