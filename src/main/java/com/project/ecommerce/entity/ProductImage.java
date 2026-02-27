@@ -1,9 +1,13 @@
 package com.project.ecommerce.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class ProductImage {
@@ -35,6 +39,15 @@ public class ProductImage {
         Id = id;
         this.publicId = publicId;
         this.url = url;
+    }
+    @ManyToOne()
+    @JoinColumn(name = "product_id")
+    @JsonIgnore
+    private Product product;
+    public ProductImage(String url, Product product) {
+        this.url = "/uploads"+url;
+        this.publicId = url;
+        this.product = product;
     }
 
     
