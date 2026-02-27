@@ -1,5 +1,6 @@
 package com.project.ecommerce.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -15,18 +16,18 @@ import jakarta.persistence.Table;
 @Table(name = "orders")
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Integer id;
 
     @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
     @JoinColumn(name = "order_id")
-    private List<OrderItem> orderItems;
+    private List<OrderItem> orderItems = new ArrayList<OrderItem>();
 
     private Double totalItemsAmount;
     private Double taxAmount;
     private Double totalAmount;
     private String status;
-    private String orderNo;
+    private String referenceId;
     public List<OrderItem> getOrderItems() {
         return orderItems;
     }
@@ -57,11 +58,11 @@ public class Order {
     public void setStatus(String status) {
         this.status = status;
     }
-    public String getOrderNo() {
-        return orderNo;
+    public String getReferenceId() {
+        return referenceId;
     }
-    public void setOrderNo(String orderNo) {
-        this.orderNo = orderNo;
+    public void setReferenceId(String orderNo) {
+        this.referenceId = orderNo;
     }
     
 }

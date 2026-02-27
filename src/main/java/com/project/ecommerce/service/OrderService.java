@@ -1,0 +1,54 @@
+package com.project.ecommerce.service;
+
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.project.ecommerce.dto.CreateOrderRequest;
+import com.project.ecommerce.dto.OrderItemDto;
+import com.project.ecommerce.entity.Order;
+import com.project.ecommerce.entity.OrderItem;
+import com.project.ecommerce.entity.Product;
+import com.project.ecommerce.repository.OrderRepository;
+import com.project.ecommerce.repository.ProductRepository;
+
+@Service
+public class OrderService {
+    @Autowired
+    private ProductRepository productRepository;
+
+    @Autowired
+    private OrderRepository orderRepository;
+
+    public Order createOrder(CreateOrderRequest orderRequest){
+        Order order = new Order();
+        order.setStatus("PENDING");
+        double totalItemsAmount = 0;
+
+        for(OrderItemDto item: orderRequest.getOrderItems()){
+            OrderItem orderItem = new OrderItem();
+            orderItem.setName(item.getName());
+            orderItem.setPrice(item.getPrice());
+            orderItem.setImage(item.getImage());
+            orderItem.setQuantity(item.getQuantity());
+
+            Product product = productRepository.findById(item.getProductId()).orElseThrow(() -> new RuntimeException("product not found"));
+            orderItem.setProduct(product);
+            totalItemsAmount += item.getPrice() * item.getQuantity();
+
+
+            order.getOrderItems().add(orderItem);
+        }
+        order.setTotalItemsAmount(totalItemsAmount);
+        double totalAmount = 0;
+        double taxAmount=10;
+        totalAmount = totalItemsAmount -taxAmount;
+        order.setTotalAmount(totalAmount);
+        order.setTaxAmount(taxAmount);
+        order.setReferenceId(UUID.randomUUID().toString() );
+
+        return orderRepository.save(order);
+    }
+
+}
