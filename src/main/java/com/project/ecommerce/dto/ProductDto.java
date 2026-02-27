@@ -2,9 +2,6 @@ package com.project.ecommerce.dto;
 
 import java.util.List;
 
-import com.project.ecommerce.entity.ProductImage;
-
-
 public class ProductDto {
     private Integer id;
 
@@ -24,7 +21,7 @@ public class ProductDto {
 
     private Integer numOfReviews =0;
 
-    private List<ProductImage> images;
+    private List<ProductImageDto> images;
 
     private List<ProductReviewDto> reviews;
     
@@ -89,7 +86,7 @@ public class ProductDto {
     public void setCategory(String category) {
         this.category = category;
     }
-    
+
     public ProductDto() {
         super();
     }
@@ -105,10 +102,10 @@ public class ProductDto {
         this.seller = seller;
         this.stock = stock;
     }
-    public List<ProductImage> getImages() {
+    public List<ProductImageDto> getImages() {
         return images;
     }
-    public void setImages(List<ProductImage> images) {
-        this.images = images;
+    public void setImages(List<ProductImageDto> imageDtos) {
+        this.images = imageDtos;
     }
 }

@@ -13,6 +13,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.project.ecommerce.dto.ProductDto;
+import com.project.ecommerce.dto.ProductImageDto;
 import com.project.ecommerce.dto.ProductReviewDto;
 import com.project.ecommerce.entity.Product;
 import com.project.ecommerce.entity.ProductReview;
@@ -58,6 +59,14 @@ public class ProductService {
             return reviewDto;
         }).collect(Collectors.toList());
         dto.setReviews(reviewDtos);
+
+        List<ProductImageDto> imageDtos = product.getImages().stream().map(image ->{
+            ProductImageDto imageDto  = new ProductImageDto(image.getPublicId());
+            return imageDto;
+        }).collect(Collectors.toList());
+        dto.setImages(imageDtos);;
+        
+
         return dto;
     }
 

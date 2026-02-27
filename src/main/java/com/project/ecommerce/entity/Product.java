@@ -135,4 +135,10 @@ public class Product {
     {
         super();
     }
+    public List<ProductImage> getImages() {
+        return images;
+    }
+    public void setImages(List<ProductImage> images) {
+        this.images = images;
+    }
 }
