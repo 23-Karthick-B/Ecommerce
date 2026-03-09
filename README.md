@@ -1,6 +1,6 @@
-# 🛒 Ecommerce Backend API (Spring Boot)
+# Ecommerce Backend API (Spring Boot)
 
-## 📌 Project Overview
+## Project Overview
 This project is a **Spring Boot based E-commerce backend API** that provides REST endpoints for managing:
 
 - Product catalog
@@ -12,7 +12,7 @@ The application is built using **Spring Boot, Spring Data JPA, and REST APIs** a
 
 ---
 
-# ⚙️ Tech Stack
+# Tech Stack
 
 | Technology | Purpose |
 |---|---|
@@ -25,7 +25,7 @@ The application is built using **Spring Boot, Spring Data JPA, and REST APIs** a
 
 ---
 
-# 🏗️ Project Architecture
+# Project Architecture
 
 The project follows a **layered architecture**.
 
@@ -53,7 +53,7 @@ Represents database tables.
 
 ---
 
-# 📂 Project Structure
+# Project Structure
 
 ```
 src/main/java/com/project/ecommerce
@@ -81,9 +81,9 @@ src/main/java/com/project/ecommerce
 
 ---
 
-# 🚀 Running the Project
+# Running the Project
 
-## 1️⃣ Clone the Repository
+## 1. Clone the Repository
 
 ```bash
 git clone https://github.com/23-Karthick-B/Ecommerce.git
@@ -92,7 +92,7 @@ cd Ecommerce
 
 ---
 
-## 2️⃣ Configure Database
+## 2. Configure Database
 
 Edit `application.properties`
 
@@ -107,7 +107,7 @@ spring.jpa.show-sql=true
 
 ---
 
-## 3️⃣ Run the Application
+## 3. Run the Application
 
 Using Maven
 
@@ -129,7 +129,7 @@ http://localhost:8080
 
 ---
 
-# 📡 API Documentation
+# API Documentation
 
 Base URL
 
@@ -139,7 +139,7 @@ http://localhost:8080/api
 
 ---
 
-# 📦 Product APIs
+# Product APIs
 
 ## Get All Products (Pagination)
 
@@ -223,7 +223,7 @@ GET /api/products/search?category=Electronics&minPrice=10000&maxPrice=50000
 
 ---
 
-# ⭐ Product Review API
+# Product Review API
 
 ## Add Product Review
 
@@ -249,7 +249,7 @@ Review added
 
 ---
 
-# 📦 Order APIs
+# Order APIs
 
 ## Create Order
 
@@ -304,7 +304,7 @@ Example Response
 
 ---
 
-# 🧪 API Testing
+# API Testing
 
 You can test the APIs using:
 
@@ -320,7 +320,7 @@ http://localhost:8080/api/products
 
 ---
 
-# 📌 Features Implemented
+# Features Implemented
 
 ✔ Product listing with pagination  
 ✔ Product search with filters  
@@ -330,7 +330,7 @@ http://localhost:8080/api/products
 
 ---
 
-# 👨‍💻 Author
+# Author
 
 **Karthick B**
 
