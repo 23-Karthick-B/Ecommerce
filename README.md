@@ -443,7 +443,7 @@ http://54.xx.xxx.xxx:8080/api/products
 ✔ Demonstrates cloud deployment skills
 
 ---
-# 📌 Future Improvements
+# Future Improvements
 
 - Authentication and Authorization
 - Shopping cart management
