@@ -330,6 +330,129 @@ http://localhost:8080/api/products
 
 ---
 
+---
+
+# Deployment (AWS)
+
+The application is deployed on **Amazon Web Services (AWS)** using an **EC2 instance**.
+
+## Deployment Architecture
+
+```
+Local Development
+       ↓
+Build JAR using Maven
+       ↓
+Upload JAR to AWS EC2
+       ↓
+Run Spring Boot Application
+       ↓
+Access APIs via Public EC2 IP
+```
+
+---
+
+## Steps Used for Deployment
+
+### 1. Launch EC2 Instance
+
+- AWS EC2 instance created
+- Operating System: **Ubuntu / Amazon Linux**
+- Security group configured to allow:
+  - **Port 22 (SSH)**
+  - **Port 8080 (Application)**
+
+---
+
+### 2. Install Java on EC2
+
+```bash
+sudo apt update
+sudo apt install openjdk-17-jdk
+```
+
+Verify installation
+
+```bash
+java -version
+```
+
+---
+
+### 3. Build the Application
+
+On the local machine:
+
+```bash
+mvn clean package
+```
+
+This generates
+
+```
+target/ecommerce.jar
+```
+
+---
+
+### 4. Upload JAR to EC2
+
+Using SCP
+
+```bash
+scp target/ecommerce.jar ubuntu@<EC2-PUBLIC-IP>:/home/ubuntu
+```
+
+---
+
+### 5. Run the Spring Boot Application
+
+SSH into EC2
+
+```bash
+ssh ubuntu@<EC2-PUBLIC-IP>
+```
+
+Run the application
+
+```bash
+java -jar ecommerce.jar
+```
+
+---
+
+### 6. Access the API
+
+```
+http://<EC2-PUBLIC-IP>:8080/api/products
+```
+
+Example:
+
+```
+http://54.xx.xxx.xxx:8080/api/products
+```
+
+---
+
+## Deployment Benefits
+
+✔ Cloud hosted backend  
+✔ Accessible via public API  
+✔ Scalable infrastructure  
+✔ Demonstrates cloud deployment skills
+
+---
+# 📌 Future Improvements
+
+- Authentication and Authorization
+- Shopping cart management
+- Payment integration
+- Admin dashboard
+- API documentation using Swagger
+
+---
+
 # Author
 
 **Karthick B**
